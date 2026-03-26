@@ -1,25 +1,45 @@
 import React from 'react';
 
-const BookCard = ({ book }) => {
+const BookCard = ({ book, toggleReadStatus }) => {
   const cardStyle = {
-    backgroundColor: 'var(--card-bg)',
+    backgroundColor: book.isRead ? '#e0ffe0' : 'var(--card-bg)',
     padding: '15px',
     borderRadius: '8px',
     boxShadow: '0 2px 5px rgba(0,0,0,0.1)',
-    width: '200px'
+    width: '200px',
+    display: 'flex',
+    flexDirection: 'column'
   };
 
   return (
     <div style={cardStyle}>
-      <img 
-        src="https://via.placeholder.com/150x200" 
-        alt={book.title} 
-        style={{ width: '100%', borderRadius: '4px' }} 
+      <img
+        src="https://via.placeholder.com/150x200"
+        alt={book.title}
+        style={{ width: '100%', borderRadius: '4px', opacity: book.isRead ? 0.7 : 1 }}
       />
       <h3>{book.title}</h3>
       <p><strong>Author:</strong> {book.author}</p>
       <p><strong>Genre:</strong> {book.genre}</p>
       <p><strong>Year:</strong> {book.year}</p>
+
+      <div style={{ marginTop: 'auto', paddingTop: '10px' }}>
+        <button
+          onClick={() => toggleReadStatus(book.id)}
+          style={{
+            width: '100%',
+            padding: '8px',
+            backgroundColor: book.isRead ? '#4caf50' : '#2196f3',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer',
+            fontWeight: 'bold'
+          }}
+        >
+          {book.isRead ? 'Mark as Unread' : 'Mark as Read'}
+        </button>
+      </div>
     </div>
   );
 };
