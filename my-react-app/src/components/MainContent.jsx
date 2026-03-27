@@ -2,6 +2,7 @@ import React from 'react';
 import Filters from './Filters.jsx';
 import BookList from './BookList.jsx';
 import AddBookForm from './AddBookForm.jsx';
+import ApiList from './ApiList.jsx';
 
 const MainContent = ({ books, toggleReadStatus, removeBook, addBook, filterCategory, setFilterCategory }) => {
   return (
@@ -9,6 +10,7 @@ const MainContent = ({ books, toggleReadStatus, removeBook, addBook, filterCateg
       <AddBookForm addBook={addBook} />
       <Filters filterCategory={filterCategory} setFilterCategory={setFilterCategory} />
       <BookList books={books} toggleReadStatus={toggleReadStatus} removeBook={removeBook} />
+      <ApiList />
     </main>
   );
 };
