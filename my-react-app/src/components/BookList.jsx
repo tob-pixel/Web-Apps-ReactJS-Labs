@@ -1,7 +1,7 @@
 import React from 'react';
 import BookCard from './BookCard.jsx';
 
-const BookList = ({ books, toggleReadStatus }) => {
+const BookList = ({ books, toggleReadStatus, removeBook }) => {
   if (books.length === 0) {
     return (
       <section style={{ padding: '40px 20px', textAlign: 'center', color: '#666' }}>
@@ -14,7 +14,7 @@ const BookList = ({ books, toggleReadStatus }) => {
   return (
     <section style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', padding: '20px' }}>
       {books.map(book => (
-        <BookCard key={book.id} book={book} toggleReadStatus={toggleReadStatus} />
+        <BookCard key={book.id} book={book} toggleReadStatus={toggleReadStatus} removeBook={removeBook} />
       ))}
     </section>
   );

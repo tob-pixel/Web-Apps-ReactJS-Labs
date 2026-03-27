@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BookCard = ({ book, toggleReadStatus }) => {
+const BookCard = ({ book, toggleReadStatus, removeBook }) => {
   const cardStyle = {
     backgroundColor: book.isRead ? '#e0ffe0' : 'var(--card-bg)',
     padding: '15px',
@@ -23,11 +23,11 @@ const BookCard = ({ book, toggleReadStatus }) => {
       <p><strong>Genre:</strong> {book.genre}</p>
       <p><strong>Year:</strong> {book.year}</p>
 
-      <div style={{ marginTop: 'auto', paddingTop: '10px' }}>
+      <div style={{ marginTop: 'auto', paddingTop: '10px', display: 'flex', gap: '8px' }}>
         <button
           onClick={() => toggleReadStatus(book.id)}
           style={{
-            width: '100%',
+            flex: 1,
             padding: '8px',
             backgroundColor: book.isRead ? '#4caf50' : '#2196f3',
             color: 'white',
@@ -38,6 +38,23 @@ const BookCard = ({ book, toggleReadStatus }) => {
           }}
         >
           {book.isRead ? 'Mark as Unread' : 'Mark as Read'}
+        </button>
+        <button
+          onClick={() => removeBook(book.id)}
+          style={{
+            padding: '8px 12px',
+            backgroundColor: '#ff5252',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer',
+            fontWeight: 'bold',
+            fontSize: '16px',
+            lineHeight: 1
+          }}
+          title="Remove Book"
+        >
+          &times;
         </button>
       </div>
     </div>

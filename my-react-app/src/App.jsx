@@ -24,6 +24,14 @@ function App() {
     );
   };
 
+  const addBook = (newBook) => {
+    setBooks(prev => [...prev, newBook]);
+  };
+
+  const removeBook = (id) => {
+    setBooks(prev => prev.filter(book => book.id !== id));
+  };
+
   const readCount = books.filter(book => book.isRead).length;
 
   const filteredBooks = filterCategory === 'All' 
@@ -36,6 +44,8 @@ function App() {
       <MainContent 
         books={filteredBooks} 
         toggleReadStatus={toggleReadStatus}
+        removeBook={removeBook}
+        addBook={addBook}
         filterCategory={filterCategory}
         setFilterCategory={setFilterCategory}
       />
