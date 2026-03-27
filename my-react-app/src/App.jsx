@@ -14,6 +14,7 @@ const initialBooksData = [
 
 function App() {
   const [books, setBooks] = useState(initialBooksData);
+  const [filterCategory, setFilterCategory] = useState('All');
 
   const toggleReadStatus = (id) => {
     setBooks(prevBooks => 
@@ -25,10 +26,19 @@ function App() {
 
   const readCount = books.filter(book => book.isRead).length;
 
+  const filteredBooks = filterCategory === 'All' 
+    ? books 
+    : books.filter(book => book.genre === filterCategory);
+
   return (
     <>
       <Header readCount={readCount} />
-      <MainContent books={books} toggleReadStatus={toggleReadStatus} />
+      <MainContent 
+        books={filteredBooks} 
+        toggleReadStatus={toggleReadStatus}
+        filterCategory={filterCategory}
+        setFilterCategory={setFilterCategory}
+      />
       <Footer />
     </>
   );
