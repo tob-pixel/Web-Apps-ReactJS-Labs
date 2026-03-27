@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const BookCard = ({ book, toggleReadStatus, removeBook }) => {
   const cardStyle = {
@@ -56,6 +57,17 @@ const BookCard = ({ book, toggleReadStatus, removeBook }) => {
         >
           &times;
         </button>
+      </div>
+      <div style={{ marginTop: '10px', textAlign: 'center' }}>
+        <Link to={`/book/${book.id}`} style={{
+            display: 'block',
+            padding: '8px',
+            backgroundColor: '#e0e0e0',
+            color: '#333',
+            textDecoration: 'none',
+            borderRadius: '4px',
+            fontWeight: 'bold'
+        }}>Details</Link>
       </div>
     </div>
   );

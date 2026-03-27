@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router';
 import './styles/variables.css';
 import Header from './components/Header.jsx';
-import MainContent from './components/MainContent.jsx';
 import Footer from './components/Footer.jsx';
+
+import HomePage from './pages/HomePage.jsx';
+import BooksPage from './pages/BooksPage.jsx';
+import AboutPage from './pages/AboutPage.jsx';
+import BookDetailsPage from './pages/BookDetailsPage.jsx';
+import NotFoundPage from './pages/NotFoundPage.jsx';
 
 const initialBooksData = [
   { id: 1, title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', genre: 'Fiction', year: 1925, isRead: false },
@@ -57,14 +63,20 @@ function App() {
   return (
     <>
       <Header readCount={readCount} />
-      <MainContent 
-        books={filteredBooks} 
-        toggleReadStatus={toggleReadStatus}
-        removeBook={removeBook}
-        addBook={addBook}
-        filterCategory={filterCategory}
-        setFilterCategory={setFilterCategory}
-      />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/books" element={<BooksPage 
+          books={filteredBooks} 
+          toggleReadStatus={toggleReadStatus}
+          removeBook={removeBook}
+          addBook={addBook}
+          filterCategory={filterCategory}
+          setFilterCategory={setFilterCategory}
+        />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/book/:id" element={<BookDetailsPage books={books} />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
       <Footer />
     </>
   );
