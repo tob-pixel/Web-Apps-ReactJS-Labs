@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './styles/variables.css';
 import Header from './components/Header.jsx';
 import MainContent from './components/MainContent.jsx';
@@ -13,8 +13,24 @@ const initialBooksData = [
 ];
 
 function App() {
-  const [books, setBooks] = useState(initialBooksData);
+  const [books, setBooks] = useState(() => {
+    const savedBooks = localStorage.getItem('books-data');
+    return savedBooks ? JSON.parse(savedBooks) : initialBooksData;
+  });
   const [filterCategory, setFilterCategory] = useState('All');
+
+  useEffect(() => {
+    // Відповідно до завдання: зчитування даних при першому рендері
+    const savedBooks = localStorage.getItem('books-data');
+    if (savedBooks) {
+      setBooks(JSON.parse(savedBooks));
+    }
+  }, []);
+
+  useEffect(() => {
+    // Автоматичне збереження масиву даних у localStorage при кожній зміні
+    localStorage.setItem('books-data', JSON.stringify(books));
+  }, [books]);
 
   const toggleReadStatus = (id) => {
     setBooks(prevBooks => 
