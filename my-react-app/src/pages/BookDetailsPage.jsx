@@ -54,16 +54,16 @@ export default function BookDetailsPage({ books }) {
                                 <span>ID: {book.id}</span>
                             </div>
                             <h2 style={{ marginTop: '10px' }}>{book.title}</h2>
-                            <p style={{ fontSize: '1.2rem', color: '#555' }}>By {book.author}</p>
+                            <p style={{ fontSize: '1.2rem', color: 'var(--text)' }}>By {book.author}</p>
                             <p><strong>Published Year:</strong> {book.year}</p>
                             
-                            <div style={{ marginTop: '15px', padding: '10px', backgroundColor: book.isRead ? '#e0ffe0' : '#f0f0f0', borderRadius: '4px', display: 'inline-block' }}>
+                            <div style={{ marginTop: '15px', padding: '10px', backgroundColor: book.isRead ? 'var(--success-bg)' : 'var(--input-bg)', borderRadius: '4px', display: 'inline-block' }}>
                                 <span style={{
                                     display: 'inline-block',
                                     width: '10px',
                                     height: '10px',
                                     borderRadius: '50%',
-                                    backgroundColor: book.isRead ? '#4caf50' : '#ff9800',
+                                    backgroundColor: book.isRead ? 'var(--success-text)' : 'var(--warning-color)',
                                     marginRight: '8px'
                                 }}></span>
                                 <strong>Status:</strong> {book.isRead ? 'Read' : 'Unread'}

@@ -10,6 +10,29 @@
   --social-bg: rgba(244, 243, 236, 0.5);
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  
+  --bg-color: #ffffff;
+  --text-color: #1a1a1a;
+  --card-bg: #ffffff;
+  
+  --header-bg: #aa3bff;
+  --header-text: #ffffff;
+  --btn-bg: #ffffff;
+  --btn-text: #333333;
+  --badge-bg: #ffffff;
+  --badge-text: #aa3bff;
+
+  --primary-color: #007bff;
+  --success-bg: #e0ffe0;
+  --success-text: #4caf50;
+  --primary-btn-bg: #2196f3;
+  --primary-btn-text: #ffffff;
+  --danger-btn-bg: #ff5252;
+  --danger-btn-text: #ffffff;
+  --details-btn-bg: #e0e0e0;
+  --details-btn-text: #333333;
+  --input-bg: #ffffff;
+  --warning-color: #ff9800;
 
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
@@ -30,28 +53,52 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
+[data-theme='dark'] {
+  --text: #9ca3af;
+  --text-h: #f3f4f6;
+  --bg: #16171d;
+  --border: #2e303a;
+  --code-bg: #1f2028;
+  --accent: #c084fc;
+  --accent-bg: rgba(192, 132, 252, 0.15);
+  --accent-border: rgba(192, 132, 252, 0.5);
+  --social-bg: rgba(47, 48, 58, 0.5);
+  --shadow:
+    rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+    
+  --bg-color: #121212;
+  --text-color: #e0e0e0;
+  --card-bg: #1e1e1e;
+  
+  --header-bg: #1e1e1e;
+  --header-text: #e0e0e0;
+  --btn-bg: #333333;
+  --btn-text: #e0e0e0;
+  --badge-bg: #333333;
+  --badge-text: #c084fc;
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
+  --primary-color: #4da3ff;
+  --success-bg: rgba(76, 175, 80, 0.2);
+  --success-text: #81c784;
+  --primary-btn-bg: #1976d2;
+  --primary-btn-text: #ffffff;
+  --danger-btn-bg: #d32f2f;
+  --danger-btn-text: #ffffff;
+  --details-btn-bg: #333333;
+  --details-btn-text: #e0e0e0;
+  --input-bg: #2e2e2e;
+  --warning-color: #ffb74d;
+}
+
+[data-theme='dark'] #social .button-icon {
+  filter: invert(1) brightness(2);
 }
 
 body {
   margin: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
 }
 
 #root {

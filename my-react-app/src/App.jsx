@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router';
 import './styles/variables.css';
+import { ThemeProvider } from './context/ThemeContext.jsx';
+import { SettingsProvider } from './context/SettingsContext.jsx';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
 
@@ -61,7 +63,8 @@ function App() {
     : books.filter(book => book.genre === filterCategory);
 
   return (
-    <>
+    <ThemeProvider>
+      <SettingsProvider>
       <Header readCount={readCount} />
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -78,7 +81,8 @@ function App() {
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
-    </>
+      </SettingsProvider>
+    </ThemeProvider>
   );
 }
 

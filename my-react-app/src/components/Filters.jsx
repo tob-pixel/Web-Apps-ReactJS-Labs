@@ -4,7 +4,7 @@ const Filters = ({ filterCategory, setFilterCategory }) => {
   const categories = ['All', 'Fiction', 'Non-Fiction', 'Science', 'History'];
 
   return (
-    <nav style={{ padding: '1rem', borderBottom: '1px solid #ccc' }}>
+    <nav style={{ padding: '1rem', borderBottom: '1px solid var(--border)' }}>
       <ul style={{ listStyle: 'none', display: 'flex', gap: '15px', padding: 0 }}>
         {categories.map(category => (
           <li 

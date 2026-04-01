@@ -35,7 +35,7 @@ const AddBookForm = ({ addBook }) => {
     maxWidth: '400px',
     margin: '20px auto',
     padding: '20px',
-    border: '1px solid #ccc',
+    border: '1px solid var(--border)',
     borderRadius: '8px',
     backgroundColor: 'var(--card-bg, #fff)'
   };
@@ -43,7 +43,9 @@ const AddBookForm = ({ addBook }) => {
   const inputStyle = {
     padding: '8px',
     borderRadius: '4px',
-    border: '1px solid #aaa'
+    border: '1px solid var(--border)',
+    backgroundColor: 'var(--input-bg)',
+    color: 'var(--text-color)'
   };
 
   return (
@@ -82,7 +84,7 @@ const AddBookForm = ({ addBook }) => {
           required
         />
       </div>
-      <button type="submit" style={{ padding: '10px', cursor: 'pointer', backgroundColor: '#4caf50', color: 'white', border: 'none', borderRadius: '4px', fontWeight: 'bold' }}>
+      <button type="submit" style={{ padding: '10px', cursor: 'pointer', backgroundColor: 'var(--success-text)', color: 'white', border: 'none', borderRadius: '4px', fontWeight: 'bold' }}>
         Add Book
       </button>
     </form>

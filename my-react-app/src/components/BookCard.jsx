@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 const BookCard = ({ book, toggleReadStatus, removeBook }) => {
   const cardStyle = {
-    backgroundColor: book.isRead ? '#e0ffe0' : 'var(--card-bg)',
+    backgroundColor: book.isRead ? 'var(--success-bg)' : 'var(--card-bg)',
     padding: '15px',
     borderRadius: '8px',
     boxShadow: '0 2px 5px rgba(0,0,0,0.1)',
@@ -30,8 +30,8 @@ const BookCard = ({ book, toggleReadStatus, removeBook }) => {
           style={{
             flex: 1,
             padding: '8px',
-            backgroundColor: book.isRead ? '#4caf50' : '#2196f3',
-            color: 'white',
+            backgroundColor: book.isRead ? 'var(--success-text)' : 'var(--primary-btn-bg)',
+            color: book.isRead ? 'white' : 'var(--primary-btn-text)',
             border: 'none',
             borderRadius: '4px',
             cursor: 'pointer',
@@ -44,8 +44,8 @@ const BookCard = ({ book, toggleReadStatus, removeBook }) => {
           onClick={() => removeBook(book.id)}
           style={{
             padding: '8px 12px',
-            backgroundColor: '#ff5252',
-            color: 'white',
+            backgroundColor: 'var(--danger-btn-bg)',
+            color: 'var(--danger-btn-text)',
             border: 'none',
             borderRadius: '4px',
             cursor: 'pointer',
@@ -62,8 +62,8 @@ const BookCard = ({ book, toggleReadStatus, removeBook }) => {
         <Link to={`/book/${book.id}`} style={{
             display: 'block',
             padding: '8px',
-            backgroundColor: '#e0e0e0',
-            color: '#333',
+            backgroundColor: 'var(--details-btn-bg)',
+            color: 'var(--details-btn-text)',
             textDecoration: 'none',
             borderRadius: '4px',
             fontWeight: 'bold'
