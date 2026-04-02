@@ -1,75 +1,54 @@
 import React from 'react';
 import { Link } from 'react-router';
+import { Card, Button, Badge } from './ui';
 
 const BookCard = ({ book, toggleReadStatus, removeBook }) => {
-  const cardStyle = {
-    backgroundColor: book.isRead ? 'var(--success-bg)' : 'var(--card-bg)',
-    padding: '15px',
-    borderRadius: '8px',
-    boxShadow: '0 2px 5px rgba(0,0,0,0.1)',
-    width: '200px',
-    display: 'flex',
-    flexDirection: 'column'
-  };
-
   return (
-    <div style={cardStyle}>
+    <Card hoverable style={{ width: '250px' }}>
       <img
         src="https://via.placeholder.com/150x200"
         alt={book.title}
-        style={{ width: '100%', borderRadius: '4px', opacity: book.isRead ? 0.7 : 1 }}
+        style={{ width: '100%', borderRadius: 'var(--radius-sm)', opacity: book.isRead ? 0.7 : 1, marginBottom: 'var(--space-4)' }}
       />
-      <h3>{book.title}</h3>
-      <p><strong>Author:</strong> {book.author}</p>
-      <p><strong>Genre:</strong> {book.genre}</p>
-      <p><strong>Year:</strong> {book.year}</p>
+      <Card.Header style={{ paddingBottom: 'var(--space-2)', marginBottom: 'var(--space-2)', borderBottom: 'none' }}>
+        <h3 style={{ margin: '0 0 var(--space-2) 0', fontSize: 'var(--font-size-lg)', color: 'var(--color-text)' }}>{book.title}</h3>
+        <Badge variant={book.isRead ? 'success' : 'default'} style={{ marginBottom: 'var(--space-2)' }}>
+          {book.isRead ? 'Read' : 'Unread'}
+        </Badge>
+      </Card.Header>
+      
+      <Card.Body style={{ fontSize: 'var(--font-size-sm)' }}>
+        <p style={{ margin: '0 0 var(--space-1) 0' }}><strong>Author:</strong> {book.author}</p>
+        <p style={{ margin: '0 0 var(--space-1) 0' }}><strong>Genre:</strong> {book.genre}</p>
+        <p style={{ margin: '0' }}><strong>Year:</strong> {book.year}</p>
+      </Card.Body>
 
-      <div style={{ marginTop: 'auto', paddingTop: '10px', display: 'flex', gap: '8px' }}>
-        <button
-          onClick={() => toggleReadStatus(book.id)}
-          style={{
-            flex: 1,
-            padding: '8px',
-            backgroundColor: book.isRead ? 'var(--success-text)' : 'var(--primary-btn-bg)',
-            color: book.isRead ? 'white' : 'var(--primary-btn-text)',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: 'pointer',
-            fontWeight: 'bold'
-          }}
-        >
-          {book.isRead ? 'Mark as Unread' : 'Mark as Read'}
-        </button>
-        <button
-          onClick={() => removeBook(book.id)}
-          style={{
-            padding: '8px 12px',
-            backgroundColor: 'var(--danger-btn-bg)',
-            color: 'var(--danger-btn-text)',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: 'pointer',
-            fontWeight: 'bold',
-            fontSize: '16px',
-            lineHeight: 1
-          }}
-          title="Remove Book"
-        >
-          &times;
-        </button>
-      </div>
-      <div style={{ marginTop: '10px', textAlign: 'center' }}>
-        <Link to={`/book/${book.id}`} style={{
-            display: 'block',
-            padding: '8px',
-            backgroundColor: 'var(--details-btn-bg)',
-            color: 'var(--details-btn-text)',
-            textDecoration: 'none',
-            borderRadius: '4px',
-            fontWeight: 'bold'
-        }}>Details</Link>
-      </div>
-    </div>
+      <Card.Footer style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)', marginTop: 'var(--space-4)' }}>
+        <div style={{ display: 'flex', gap: 'var(--space-2)' }}>
+          <Button
+            variant={book.isRead ? "secondary" : "primary"}
+            size="sm"
+            onClick={() => toggleReadStatus(book.id)}
+            style={{ flex: 1 }}
+          >
+            {book.isRead ? 'Mark as Unread' : 'Mark as Read'}
+          </Button>
+          <Button
+            variant="danger"
+            size="sm"
+            onClick={() => removeBook(book.id)}
+            title="Remove Book"
+          >
+            &times;
+          </Button>
+        </div>
+        <Link to={`/book/${book.id}`} style={{ textDecoration: 'none' }}>
+          <Button variant="secondary" style={{ width: '100%' }}>
+            Details
+          </Button>
+        </Link>
+      </Card.Footer>
+    </Card>
   );
 };
 

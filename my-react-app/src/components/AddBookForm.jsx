@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Card, Input, Button } from './ui';
 
 const AddBookForm = ({ addBook }) => {
   const [title, setTitle] = useState('');
@@ -28,18 +29,6 @@ const AddBookForm = ({ addBook }) => {
     setYear('');
   };
 
-  const formStyle = {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '10px',
-    maxWidth: '400px',
-    margin: '20px auto',
-    padding: '20px',
-    border: '1px solid var(--border)',
-    borderRadius: '8px',
-    backgroundColor: 'var(--card-bg, #fff)'
-  };
-
   const inputStyle = {
     padding: '8px',
     borderRadius: '4px',
@@ -49,45 +38,49 @@ const AddBookForm = ({ addBook }) => {
   };
 
   return (
-    <form style={formStyle} onSubmit={handleSubmit}>
-      <h3 style={{ marginTop: 0 }}>Add a New Book</h3>
-      <input
-        style={inputStyle}
-        type="text"
-        placeholder="Book Title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        required
-      />
-      <input
-        style={inputStyle}
-        type="text"
-        placeholder="Author"
-        value={author}
-        onChange={(e) => setAuthor(e.target.value)}
-        required
-      />
-      <div style={{ display: 'flex', gap: '10px' }}>
-        <select style={{ ...inputStyle, flex: 1 }} value={genre} onChange={(e) => setGenre(e.target.value)}>
-          <option value="Fiction">Fiction</option>
-          <option value="Non-Fiction">Non-Fiction</option>
-          <option value="Science">Science</option>
-          <option value="Fantasy">Fantasy</option>
-          <option value="Biography">Biography</option>
-        </select>
-        <input
-          style={{ ...inputStyle, flex: 1 }}
-          type="number"
-          placeholder="Year"
-          value={year}
-          onChange={(e) => setYear(e.target.value)}
-          required
-        />
-      </div>
-      <button type="submit" style={{ padding: '10px', cursor: 'pointer', backgroundColor: 'var(--success-text)', color: 'white', border: 'none', borderRadius: '4px', fontWeight: 'bold' }}>
-        Add Book
-      </button>
-    </form>
+    <Card style={{ maxWidth: '400px', margin: '20px auto' }}>
+      <form onSubmit={handleSubmit}>
+        <Card.Header style={{ borderBottom: 'none', paddingBottom: '0' }}>
+          <h3 style={{ marginTop: 0, color: 'var(--color-text)' }}>Add a New Book</h3>
+        </Card.Header>
+        <Card.Body style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
+          <Input
+            placeholder="Book Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
+          <Input
+            placeholder="Author"
+            value={author}
+            onChange={(e) => setAuthor(e.target.value)}
+            required
+          />
+          <div style={{ display: 'flex', gap: 'var(--space-2)' }}>
+            <select style={{ ...inputStyle, flex: 1, backgroundColor: 'var(--color-surface)', color: 'var(--color-text)', borderColor: 'var(--color-border)', borderRadius: 'var(--radius-md)' }} value={genre} onChange={(e) => setGenre(e.target.value)}>
+              <option value="Fiction">Fiction</option>
+              <option value="Non-Fiction">Non-Fiction</option>
+              <option value="Science">Science</option>
+              <option value="Fantasy">Fantasy</option>
+              <option value="Biography">Biography</option>
+            </select>
+            <Input
+              type="number"
+              placeholder="Year"
+              value={year}
+              onChange={(e) => setYear(e.target.value)}
+              required
+              style={{ flex: 1 }}
+            />
+          </div>
+        </Card.Body>
+        <Card.Footer style={{ borderTop: 'none', justifyContent: 'flex-start' }}>
+          <Button type="submit" variant="primary" style={{ width: '100%' }}>
+            Add Book
+          </Button>
+        </Card.Footer>
+      </form>
+    </Card>
   );
 };
 

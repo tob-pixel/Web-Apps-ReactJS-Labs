@@ -1,0 +1,53 @@
+:root {
+  /* --- Accent Colors --- */
+  --color-primary:       #3b82f6;
+  --color-primary-hover: #2563eb;
+  --color-danger:        #ef4444;
+  --color-danger-hover:  #dc2626;
+  --color-success:       #22c55e;
+  --color-warning:       #f59e0b;
+
+  /* --- Semantic Colors (Change with theme) --- */
+  --color-bg:            #ffffff;
+  --color-surface:       #f8fafc;
+  --color-surface-hover: #f1f5f9;
+  --color-border:        #e2e8f0;
+  --color-text:          #0f172a;
+  --color-text-muted:    #64748b;
+  --color-text-on-primary: #ffffff;
+
+  /* --- Typography --- */
+  --font-family: 'Inter', system-ui, sans-serif;
+  --font-size-sm:   0.875rem;   /* 14px */
+  --font-size-base: 1rem;       /* 16px */
+  --font-size-lg:   1.125rem;   /* 18px */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold:   700;
+
+  /* --- Spacing --- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+
+  /* --- Shape and Effects --- */
+  --radius-sm:  4px;
+  --radius-md:  8px;
+  --radius-lg:  12px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.08);
+  --shadow-md: 0 4px 12px rgba(0,0,0,.10);
+  --transition: 200ms ease;
+}
+
+[data-theme="dark"] {
+  --color-bg:            #0f172a;
+  --color-surface:       #1e293b;
+  --color-surface-hover: #293548;
+  --color-border:        #334155;
+  --color-text:          #f1f5f9;
+  --color-text-muted:    #94a3b8;
+}

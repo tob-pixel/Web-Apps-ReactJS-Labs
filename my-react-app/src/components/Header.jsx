@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router';
 import { useTheme } from '../context/ThemeContext.jsx';
 import { useSettings } from '../context/SettingsContext.jsx';
+import { Button, Badge } from './ui';
 
 const Header = ({ readCount }) => {
   const { theme, toggleTheme } = useTheme();
@@ -21,59 +22,41 @@ const Header = ({ readCount }) => {
 
   return (
     <header style={{
-      backgroundColor: 'var(--header-bg, var(--primary-color, #333))', // fallback if var missing
-      color: 'var(--header-text, white)',
-      padding: '1rem',
+      backgroundColor: 'var(--color-surface)',
+      color: 'var(--color-text)',
+      padding: 'var(--space-4)',
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
-      borderBottom: '1px solid var(--border)' // subtle border for theme integration
+      borderBottom: '1px solid var(--color-border)'
     }}>
       <div>
-        <h1 style={{ color: 'var(--header-text, white)' }}>{text.title}</h1>
-        <p style={{ color: 'var(--header-text, white)' }}>{text.subtitle}</p>
-        <nav style={{ display: 'flex', gap: '15px', marginTop: '10px' }}>
-          <NavLink to="/" end style={({ isActive }) => ({ color: isActive ? 'var(--secondary-color, #ffeb3b)' : 'var(--header-text, white)', textDecoration: 'none', fontWeight: isActive ? 'bold' : 'normal' })}>{text.home}</NavLink>
-          <NavLink to="/books" style={({ isActive }) => ({ color: isActive ? 'var(--secondary-color, #ffeb3b)' : 'var(--header-text, white)', textDecoration: 'none', fontWeight: isActive ? 'bold' : 'normal' })}>{text.books}</NavLink>
-          <NavLink to="/about" style={({ isActive }) => ({ color: isActive ? 'var(--secondary-color, #ffeb3b)' : 'var(--header-text, white)', textDecoration: 'none', fontWeight: isActive ? 'bold' : 'normal' })}>{text.about}</NavLink>
+        <h1 style={{ color: 'var(--color-text)', margin: '0 0 var(--space-1) 0' }}>{text.title}</h1>
+        <p style={{ color: 'var(--color-text-muted)', margin: 0 }}>{text.subtitle}</p>
+        <nav style={{ display: 'flex', gap: 'var(--space-4)', marginTop: 'var(--space-3)' }}>
+          <NavLink to="/" end style={({ isActive }) => ({ color: isActive ? 'var(--color-primary)' : 'var(--color-text)', textDecoration: 'none', fontWeight: isActive ? 'bold' : 'normal' })}>{text.home}</NavLink>
+          <NavLink to="/books" style={({ isActive }) => ({ color: isActive ? 'var(--color-primary)' : 'var(--color-text)', textDecoration: 'none', fontWeight: isActive ? 'bold' : 'normal' })}>{text.books}</NavLink>
+          <NavLink to="/about" style={({ isActive }) => ({ color: isActive ? 'var(--color-primary)' : 'var(--color-text)', textDecoration: 'none', fontWeight: isActive ? 'bold' : 'normal' })}>{text.about}</NavLink>
         </nav>
       </div>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-        <button 
+      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
+        <Button 
+          variant="secondary"
           onClick={toggleLanguage}
-          style={{
-            padding: '8px 12px',
-            borderRadius: '20px',
-            border: 'none',
-            backgroundColor: 'var(--btn-bg, #fff)',
-            color: 'var(--btn-text, #333)',
-            cursor: 'pointer',
-            fontWeight: 'bold',
-            transition: 'all 0.3s'
-          }}
         >
           {text.langToggle}
-        </button>
+        </Button>
 
-        <button 
+        <Button 
+          variant="secondary"
           onClick={toggleTheme}
-          style={{
-            padding: '8px 12px',
-            borderRadius: '20px',
-            border: 'none',
-            backgroundColor: 'var(--btn-bg, #fff)',
-            color: 'var(--btn-text, #333)',
-            cursor: 'pointer',
-            fontWeight: 'bold',
-            transition: 'all 0.3s'
-          }}
         >
           {theme === 'light' ? text.themeDark : text.themeLight}
-        </button>
+        </Button>
         {readCount !== undefined && (
-          <div style={{ backgroundColor: 'var(--badge-bg, white)', color: 'var(--badge-text, var(--primary-color))', padding: '5px 10px', borderRadius: '15px', fontWeight: 'bold' }}>
+          <Badge variant="primary" style={{ padding: 'var(--space-2) var(--space-3)' }}>
             {text.booksRead}{readCount}
-          </div>
+          </Badge>
         )}
       </div>
     </header>
